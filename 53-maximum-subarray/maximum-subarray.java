@@ -16,17 +16,30 @@ class Solution {
         // return maxi;
 
 
-        int sum = 0;
-        int minPrefix = 0;
+        //kadanes version
+        int currentSum = 0;
         int maxSum = Integer.MIN_VALUE;
 
         for (int i = 0; i < nums.length; i++) {
-            sum += nums[i];                 // prefixSum[i]
-            maxSum = Math.max(maxSum, sum - minPrefix);
-            minPrefix = Math.min(minPrefix, sum);
+            currentSum = Math.max(nums[i], currentSum + nums[i]);
+            maxSum = Math.max(maxSum, currentSum);
         }
         return maxSum;
 
+        //with prefix
+        // int sum = 0;
+        // int minPrefix = 0;
+        // int maxSum = Integer.MIN_VALUE;
+
+        // for (int i = 0; i < nums.length; i++) {
+        //     sum += nums[i];                 // prefixSum[i]
+        //     maxSum = Math.max(maxSum, sum - minPrefix);
+        //     minPrefix = Math.min(minPrefix, sum);
+        // }
+        // return maxSum;
+
+
+        //with prefix
         // int sum = 0;
         // int prefixSum[] = new int[nums.length];
 
