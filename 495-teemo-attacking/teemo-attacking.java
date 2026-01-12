@@ -3,6 +3,7 @@ class Solution {
         int start = timeSeries[0];
         int end = start+duration-1;
         int totDay = 0;
+        //finding total seconds
         for(int i=0;i<timeSeries.length;i++){
             if(end<timeSeries[i]){
                 totDay= totDay+end-start+1;
