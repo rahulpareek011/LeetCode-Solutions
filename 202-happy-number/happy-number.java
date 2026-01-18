@@ -10,13 +10,29 @@ class Solution {
     }
 
     public boolean isHappy(int n) {
-        int slow = n;
-        int fast = n;
-        do{
-            slow = square(slow);
-            fast = square(square(fast));
-        } while(slow != fast);
-        return slow==1;
+        // int slow = n;
+        // int fast = n;
+        // do{
+        //     slow = square(slow);
+        //     fast = square(square(fast));
+        // } while(slow != fast);
+        // return slow==1;
+
+        HashSet<Integer> hs = new HashSet<>();
+        hs.add(1);
+        while(n>0){
+            int sum = square(n);
+            if(hs.contains(sum)){
+                if(sum==1){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                hs.add(sum);
+            }
+            n = sum;
+        }
+        return false;
     }
-    //Finding the square of the digits of a number
 }
