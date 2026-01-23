@@ -5,10 +5,18 @@ class Solution {
             int start = bookings[i][0];
             int end = bookings[i][1];
             int elem = bookings[i][2];
-            while(start<=end){
-                ans[start-1] = ans[start-1]+elem;
-                start++;
+            start--;
+            ans[start]+=elem;
+            if(end<n){
+                ans[end]-=elem;
             }
+            // while(start<=end){
+            //     ans[start-1] = ans[start-1]+elem;
+            //     start++;
+            // }
+        }
+        for(int i = 1;i<n;i++){
+            ans[i]+=ans[i-1];
         }
         return ans;
     }
