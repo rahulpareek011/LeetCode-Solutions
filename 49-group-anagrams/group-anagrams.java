@@ -12,6 +12,28 @@ class Solution {
     // }
 
     public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String,List<String>> mp = new HashMap<>();
+        Boolean[] bo = new Boolean[strs.length];
+        for(int i =0;i<strs.length;i++){
+            String word = strs[i];
+            char[] ch = word.toCharArray();
+            Arrays.sort(ch);
+            String sortedWord = new String(ch);
+
+            if(mp.containsKey(sortedWord)){
+                List<String> ls = mp.get(sortedWord);
+                ls.add(word);
+                mp.put(sortedWord,ls);
+            }else{
+                mp.put(sortedWord,new ArrayList(Arrays.asList(word)));
+            }
+        }
+        List<List<String>> ans = new ArrayList<>();
+        for(List<String> s: mp.values()){
+            ans.add(s);
+        }
+        return ans;
+
         // List<List<String>> ans = new ArrayList<>();//storing ans here
 
         // Boolean[] vis = new Boolean[strs.length];
@@ -38,28 +60,28 @@ class Solution {
         // }
         // return ans;
 
-        HashMap<String,List<String>> hsmp = new HashMap<>();
-        List<List<String>> ans = new ArrayList<>();
+        // HashMap<String,List<String>> hsmp = new HashMap<>();
+        // List<List<String>> ans = new ArrayList<>();
 
-        for(int i= 0;i<strs.length;i++){
-            String word = strs[i];
-            char[] check = word.toCharArray();
-            Arrays.sort(check);
-            String sorted = new String(check);
-            if(hsmp.containsKey(sorted)){
-                List<String> ls = hsmp.get(sorted);
-                ls.add(word);
-                hsmp.put(sorted,ls);
-            }else{
-                List<String> ls = new ArrayList<>();
-                ls.add(word);
-                hsmp.put(sorted,ls);
-            }
-        }
+        // for(int i= 0;i<strs.length;i++){
+        //     String word = strs[i];
+        //     char[] check = word.toCharArray();
+        //     Arrays.sort(check);
+        //     String sorted = new String(check);
+        //     if(hsmp.containsKey(sorted)){
+        //         List<String> ls = hsmp.get(sorted);
+        //         ls.add(word);
+        //         hsmp.put(sorted,ls);
+        //     }else{
+        //         List<String> ls = new ArrayList<>();
+        //         ls.add(word);
+        //         hsmp.put(sorted,ls);
+        //     }
+        // }
        
-        for(List<String> n: hsmp.values()){
-            ans.add(n);
-        }
-        return ans;
+        // for(List<String> n: hsmp.values()){
+        //     ans.add(n);
+        // }
+        // return ans;
     }
 }
