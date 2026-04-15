@@ -1,24 +1,24 @@
 class Solution {
     public void sortColors(int[] nums) {
-        // int i = 0;
-        // int k = 0;
-        // int j = nums.length-1;
-        // while(k<j){
-        //     if(nums[k]==2){
-        //         int temp = nums[j];
-        //         nums[j] = nums[k];
-        //         nums[k] = temp;
-        //         j--;
-        //     } if(nums[k]==0){
-        //         i++;
-        //         k++;
-        //     }else{
-        //         int temp = nums[k];
-        //         nums[k] = nums[i];
-        //         nums[i] = temp;
-        //     }
-        //     k++;
-        // }
+        int i = 0;
+        int k = 0;
+        int j = nums.length-1;
+        while(k<=j){
+            if(nums[k]==2){
+                int temp = nums[j];
+                nums[j] = nums[k];
+                nums[k] = temp;
+                j--;
+            }else if(nums[k]==0){
+                int temp = nums[k];
+                nums[k] = nums[i];
+                nums[i] = temp;
+                i++;
+                k++;
+            }else{
+                k++;
+            }
+        }
         
         
         
@@ -30,25 +30,25 @@ class Solution {
         🧠 Mental sentence to remember forever
         “I don’t sort elements — I only move boundaries until nothing is unknown.”
         */
-        int i= 0;
-        int j = 0;
-        int k = nums.length-1;
-        while(j<=k){
-            if(nums[j]==2){
-                int temp = nums[j];
-                nums[j] = nums[k];
-                nums[k] = temp;
-                k--;
-            }else if(nums[j]==0){
-                int temp = nums[j];
-                nums[j] = nums[i];
-                nums[i] = temp;
-                i++;
-                j++;
-            }else{
-                j++;
-            }
-        }
+        // int i= 0;
+        // int j = 0;
+        // int k = nums.length-1;
+        // while(j<=k){
+        //     if(nums[j]==2){
+        //         int temp = nums[j];
+        //         nums[j] = nums[k];
+        //         nums[k] = temp;
+        //         k--;
+        //     }else if(nums[j]==0){
+        //         int temp = nums[j];
+        //         nums[j] = nums[i];
+        //         nums[i] = temp;
+        //         i++;
+        //         j++;
+        //     }else{
+        //         j++;
+        //     }
+        // }
 
         // int num1 = 0;
         // int num2 = 0;
