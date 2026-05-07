@@ -1,33 +1,68 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
         Arrays.sort(nums);
         for(int i=0;i<nums.length-2;i++){
-            while(i > 0 && nums[i] == nums[i -1] && i < nums.length - 2) i++;
+            while(i>0 && nums[i]==nums[i-1] && i<nums.length-2){
+                i++;
+            }
             int target = -1 * nums[i];
-            int j = i+1;
-            int k = nums.length-1;
-            while(j<k){
-                int sum = nums[j] + nums[k];
-                if(sum==target){
-                    List<Integer> ls = Arrays.asList(nums[i],nums[j],nums[k]);
-                    res.add(ls);
-                    j++;
-                    k--;
-                    while(j<nums.length && nums[j]==nums[j-1]){
-                        j++;
+            int left = i+1;
+            int right = nums.length-1;
+            while(left<right){
+                int sum = nums[left] + nums[right];
+                if(sum == target){
+                    List<Integer> ls = Arrays.asList(nums[i],nums[left],nums[right]);
+                    ans.add(ls);
+                    left++;
+                    right--;
+                    while(left<nums.length && nums[left]==nums[left-1]){
+                        left++;
                     }
-                    while(k>=0 && nums[k]==nums[k+1]){
-                        k--;
+                    while(right>=0 && nums[right]==nums[right+1]){
+                        right--;
                     }
                 } else if(sum<target){
-                    j++;
+                    left++;
                 } else{
-                    k--;
+                    right--;
                 }
             }
         }
-        return res;
+        return ans;
+        
+        
+        
+        
+        
+        // List<List<Integer>> res = new ArrayList<>();
+        // Arrays.sort(nums);
+        // for(int i=0;i<nums.length-2;i++){
+        //     while(i > 0 && nums[i] == nums[i -1] && i < nums.length - 2) i++;
+        //     int target = -1 * nums[i];
+        //     int j = i+1;
+        //     int k = nums.length-1;
+        //     while(j<k){
+        //         int sum = nums[j] + nums[k];
+        //         if(sum==target){
+        //             List<Integer> ls = Arrays.asList(nums[i],nums[j],nums[k]);
+        //             res.add(ls);
+        //             j++;
+        //             k--;
+        //             while(j<nums.length && nums[j]==nums[j-1]){
+        //                 j++;
+        //             }
+        //             while(k>=0 && nums[k]==nums[k+1]){
+        //                 k--;
+        //             }
+        //         } else if(sum<target){
+        //             j++;
+        //         } else{
+        //             k--;
+        //         }
+        //     }
+        // }
+        // return res;
 
 
 
