@@ -14,23 +14,22 @@ class Solution {
     // }
 
     public int minSubArrayLen(int target, int[] nums) {
-        int low = 0;
-        int ans = Integer.MAX_VALUE;
+        int left = 0;
         int sum = 0;
-        for(int high = 0;high<nums.length;high++){
-            sum+=nums[high];
+        int ans = Integer.MAX_VALUE;
+        for(int i=0;i<nums.length;i++){
+            sum+=nums[i];
 
             while(sum>=target){
-                sum-=nums[low];
-                ans = Math.min(high-low+1,ans);
-                low++;
+                ans = Math.min(ans,i-left+1);
+                sum-=nums[left++];
             }
         }
-        if(ans==Integer.MAX_VALUE) return 0;
-        return ans;
-
-        
-        
+        if(ans == Integer.MAX_VALUE){
+            return 0;
+        } else{
+            return ans;
+        }
         
         
         
